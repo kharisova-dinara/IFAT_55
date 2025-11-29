@@ -18,8 +18,7 @@ public class BaseTest {
     public void setup() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--window-size=1920,1080");
-        //options.addArguments("--guest");
-        //options.addArguments("start-maximized");
+        options.addArguments("--guest");
         //options.addArguments("--headless");
 
         driver = new ChromeDriver(options);
@@ -31,6 +30,5 @@ public class BaseTest {
     @AfterMethod
     public void close() {
         driver.quit();
-        //  browser.manage().deleteCookie();
     }
 }
