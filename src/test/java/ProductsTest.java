@@ -7,9 +7,11 @@ public class ProductsTest extends BaseTest {
     public void checkGoodsAdded() {
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
-        productsPage.isPageLoaded();
+        productsPage.isPageLoaded("Products");
         productsPage.addToCart("Test.allTheThings() T-Shirt (Red)");
         productsPage.addToCart("Sauce Labs Bolt T-Shirt");
-        assertEquals(productsPage.checkGoodsQuantity(), "2");
+        productsPage.addToCart(3);
+        assertEquals(productsPage.checkGoodsQuantity(), "3");
+       // assertEquals(productsPage.checkGoodsQuantittttty (), "dsfsdfsd2");
     }
 }

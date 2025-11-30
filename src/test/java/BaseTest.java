@@ -17,7 +17,7 @@ public class BaseTest {
     @BeforeMethod
     public void setup() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--window-size=1920,1080");
+        options.addArguments("start-maximized");
         options.addArguments("--guest");
         //options.addArguments("--headless");
 
@@ -29,6 +29,6 @@ public class BaseTest {
 
     @AfterMethod
     public void close() {
-        driver.quit();
+        //driver.quit();
     }
 }
