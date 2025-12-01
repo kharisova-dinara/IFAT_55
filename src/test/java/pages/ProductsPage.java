@@ -9,21 +9,14 @@ import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage {
     By pageTitle = By.xpath("//*[@data-test='title']");
-    private static final String ADD_TO_CARD_BUTTON_PATTERN =
-            "//div[text()='%s']//ancestor::div[@class='inventory_item']//button";
-    private static final String DATA_TEST_PATTERN =
-            "[data-test='%s']";
 
+    private static final String ADD_TO_CARD_BUTTON_PATTERN = "//div[text()='%s']//ancestor::div[@class='inventory_item']//button";
+    private static final String DATA_TEST_PATTERN = "[data-test='%s']";
 
     By cartBadge = By.xpath("//*[@data-test='shopping-cart-badge']");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
-    }
-
-    public boolean isPageLoaded(final String pageTitle) {
-        // wait.until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
-        return driver.findElement(By.xpath(TEXT_LOCATOR_PATTERN.formatted(pageTitle))).isDisplayed();
     }
 
     public void addToCart(final String goodsName) {
@@ -40,7 +33,9 @@ public class ProductsPage extends BasePage {
         return driver.findElement(cartBadge).getText();
     }
 
-    public String checkGoodsQuantittttty() {
-        return driver.findElement(cartBadge).getDomAttribute("data-test");
+    public void switchToCart() {
+        driver.findElement(cartBadge).click();
     }
 }
+
+//public String checkGoodsQuantittttty() {return driver.findElement(cartBadge).getDomAttribute("data-test");}
