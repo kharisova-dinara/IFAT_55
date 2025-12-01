@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Данная страница описывает функционал витрины страницы
@@ -15,15 +14,16 @@ public class ProductsPage extends BasePage {
     private static final String DATA_TEST_PATTERN =
             "[data-test='%s']";
 
+
     By cartBadge = By.xpath("//*[@data-test='shopping-cart-badge']");
 
     public ProductsPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isPageLoaded() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
-        return driver.findElement(pageTitle).isDisplayed();
+    public boolean isPageLoaded(final String pageTitle) {
+        // wait.until(ExpectedConditions.visibilityOfElementLocated(pageTitle));
+        return driver.findElement(By.xpath(TEXT_LOCATOR_PATTERN.formatted(pageTitle))).isDisplayed();
     }
 
     public void addToCart(final String goodsName) {
@@ -32,7 +32,15 @@ public class ProductsPage extends BasePage {
         driver.findElement(addGoodsToCart).click();
     }
 
+    public void addToCart(final int goodsOrder) {
+        driver.findElements(By.xpath(TEXT_LOCATOR_PATTERN.formatted("Add to cart"))).get(goodsOrder).click();
+    }
+
     public String checkGoodsQuantity() {
         return driver.findElement(cartBadge).getText();
+    }
+
+    public String checkGoodsQuantittttty() {
+        return driver.findElement(cartBadge).getDomAttribute("data-test");
     }
 }
