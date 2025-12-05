@@ -1,3 +1,5 @@
+package tests;
+
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -5,6 +7,8 @@ import static org.testng.Assert.assertEquals;
 public class ProductsTest extends BaseTest {
     @Test
     public void checkGoodsAdded() {
+        System.out.println("ProdTest inc is running in thread:" + Thread.currentThread().getId());
+
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
         productsPage.isPageLoaded("Products");

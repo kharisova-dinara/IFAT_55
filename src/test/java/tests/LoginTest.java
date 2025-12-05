@@ -1,3 +1,5 @@
+package tests;
+
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -18,6 +20,8 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Проверка корректного логина", priority = 1, dataProvider = "invalidData")
     public void checkIncorrectLogin(String user, String password, String errorMsg) {
+        System.out.println("LoginTest incorrect is running in thread:" + Thread.currentThread().getId());
+
         loginPage.open();
         loginPage.login(user, password);
         assertTrue(loginPage.isErrorMsgAppear(), "Error message does not appear");
@@ -26,6 +30,8 @@ public class LoginTest extends BaseTest {
 
     @Test(priority = 2, enabled = true, invocationCount = 1, alwaysRun = true)
     public void checkCorrectLogin() {
+        System.out.println("LoginTest correct is running in thread:" + Thread.currentThread().getId());
+
         loginPage.open();
         loginPage.login("standard_user", "secret_sauce");
 
