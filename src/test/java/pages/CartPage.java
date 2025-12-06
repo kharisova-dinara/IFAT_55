@@ -18,7 +18,6 @@ public class CartPage extends BasePage {
         List<WebElement> allProductsNames = driver.findElements(cartPr);
         ArrayList<String> names = new ArrayList<>();
         for (WebElement product : allProductsNames) {
-        //for (WebElement product : driver.findElements(cartPr)) {
             names.add(product.getText());
         }
 
