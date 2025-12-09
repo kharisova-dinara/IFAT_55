@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import user.User;
 
 public class LoginPage extends BasePage {
     By userField = By.cssSelector("[placeholder='Username']");
@@ -21,9 +22,9 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL + url);
     }
 
-    public void login(final String userName, final String passwordName) {
-        enterLoginName(userName);
-        driver.findElement(passwordField).sendKeys(passwordName);
+    public void login(User user) {
+        enterLoginName(user.getEmail());
+        driver.findElement(passwordField).sendKeys(user.getPassword());
         driver.findElement(loginBtn).click();
     }
 
