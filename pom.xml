@@ -13,10 +13,10 @@
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.37.0</selenium.version>
-        <testng.version>7.10.2</testng.version>
+        <testng.version>7.11.0</testng.version>
         <webdrivermanager.version>6.3.3</webdrivermanager.version>
         <allure.version>2.29.1</allure.version>
-        <aspectj.version>1.9.6</aspectj.version>
+        <aspectj.version>1.9.22.1</aspectj.version>
 
     </properties>
 
@@ -48,6 +48,12 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.42</version>
         </dependency>
     </dependencies>
 
