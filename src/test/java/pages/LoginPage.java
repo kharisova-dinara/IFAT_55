@@ -35,12 +35,6 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    /*public void login(String user, String pass) {
-        enterLoginName(user);
-        driver.findElement(passwordField).sendKeys(pass);
-        driver.findElement(loginBtn).click();
-    }*/
-
     @Step("Вводим логин")
     public LoginPage enterLoginName(final String userName) {
         driver.findElement(userField).sendKeys(userName);

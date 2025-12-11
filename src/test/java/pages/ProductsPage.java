@@ -22,7 +22,6 @@ public class ProductsPage extends BasePage {
 
     @Step("Добавляем товар в корзину по названию")
     public ProductsPage addToCart(final String goodsName) {
-        //By addGoodsToCart = By.xpath(String.format(ADD_TO_CARD_BUTTON_PATTERN, "Sauce Labs Bike Light"));
         By addGoodsToCart = By.xpath(ADD_TO_CARD_BUTTON_PATTERN.formatted(goodsName));
         driver.findElement(addGoodsToCart).click();
         return this;
@@ -45,5 +44,3 @@ public class ProductsPage extends BasePage {
         return this;
     }
 }
-
-//public String checkGoodsQuantittttty() {return driver.findElement(cartBadge).getDomAttribute("data-test");}
