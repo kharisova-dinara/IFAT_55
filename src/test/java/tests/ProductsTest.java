@@ -1,19 +1,33 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.testng.annotations.Test;
 import user.UserFactory;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ProductsTest extends BaseTest {
+
+    @Epic("Продуктовая страница")
+    @Feature("Добавление товаров")
+    @Story("Проверка товаров в корзине")
+    @TmsLink("IFAT_55")
+    @Severity(SeverityLevel.CRITICAL)
+    @Owner("Dinara Kharisova nurutdinova.dinara@mail.ru")
+    @Issue("IFAT_5")
+    @Flaky
     @Test
     public void checkGoodsAdded() {
         System.out.println("ProdTest inc is running in thread:" + Thread.currentThread().getId());
 
-        loginPage.open();
-        loginPage.login(UserFactory.withAdminPermission());
-        productsPage.isPageLoaded("Products");
-        productsPage.addToCart(1);
-        assertEquals(productsPage.checkGoodsQuantity(), "1");
+        loginPage
+                .open()
+                .login(UserFactory.withAdminPermission());
+        assertTrue(productsPage.isPageLoaded("Products"));
+        productsPage
+                .addToCart("Sauce Labs Bolt T-Shirt")
+                .addToCart(1);
+        assertEquals(productsPage.checkGoodsQuantity(), "2");
     }
 }
